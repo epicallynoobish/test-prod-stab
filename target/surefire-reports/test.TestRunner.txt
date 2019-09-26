@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+Test set: test.TestRunner
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.869 sec <<< FAILURE!
+main page check(Prod Check)  Time elapsed: 10.567 sec  <<< FAILURE!
+com.codeborne.selenide.ex.ElementShould: Element should have attribute text="Р•РґРёРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР° Р¶РёР»РёС‰РЅРѕРіРѕ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°" {title}
+Element: '<title class="next-head" displayed:false></title>'
+Actual value: text="Единая информационная система жилищного строительства"
+Screenshot: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.png
+Page source: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.html
+Timeout: 4 s.
+	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:72)
+	at com.codeborne.selenide.commands.Should.execute(Should.java:24)
+	at com.codeborne.selenide.commands.Should.execute(Should.java:10)
+	at com.codeborne.selenide.commands.Commands.execute(Commands.java:145)
+	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:99)
+	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:65)
+	at com.sun.proxy.$Proxy14.shouldHave(Unknown Source)
+	at test.MyStepdefs.checkPageTitle(MyStepdefs.java:21)
+	at ?.check page title(file:src/features/OpenProd.feature:6)
+
