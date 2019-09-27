@@ -4,6 +4,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
+import java.util.concurrent.TimeUnit;
+
 @RunWith(Cucumber.class)
 
     @CucumberOptions(
@@ -13,7 +15,7 @@ import org.junit.runner.RunWith;
             //				"info.seleniumcucumber.userStepDefintions" 	// user step definitions package
             //		},
         plugin = {
-                "pretty",
+                "pretty"
                 //"html:target/cucumberHtmlReport",                       // for html result
                 //"pretty:target/cucumber-json-report.json",          // for json result
                 //"pretty:junit:target/cucumber.xml"

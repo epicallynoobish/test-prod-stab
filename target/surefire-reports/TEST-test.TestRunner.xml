@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="1" name="test.TestRunner" time="10.567" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="test.TestRunner" time="6.091" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -63,71 +63,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="Prod Check" name="main page check" time="10.567">
-    <failure message="Element should have attribute text=&quot;Р•РґРёРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР° Р¶РёР»РёС‰РЅРѕРіРѕ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°&quot; {title}
-Element: &apos;&lt;title class=&quot;next-head&quot; displayed:false&gt;&lt;/title&gt;&apos;
-Actual value: text=&quot;Единая информационная система жилищного строительства&quot;
-Screenshot: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.png
-Page source: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.html
-Timeout: 4 s." type="com.codeborne.selenide.ex.ElementShould">com.codeborne.selenide.ex.ElementShould: Element should have attribute text=&quot;Р•РґРёРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР° Р¶РёР»РёС‰РЅРѕРіРѕ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°&quot; {title}
-Element: &apos;&lt;title class=&quot;next-head&quot; displayed:false&gt;&lt;/title&gt;&apos;
-Actual value: text=&quot;Единая информационная система жилищного строительства&quot;
-Screenshot: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.png
-Page source: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.html
-Timeout: 4 s.
-	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:72)
-	at com.codeborne.selenide.commands.Should.execute(Should.java:24)
-	at com.codeborne.selenide.commands.Should.execute(Should.java:10)
-	at com.codeborne.selenide.commands.Commands.execute(Commands.java:145)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:99)
-	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:65)
-	at com.sun.proxy.$Proxy14.shouldHave(Unknown Source)
-	at test.MyStepdefs.checkPageTitle(MyStepdefs.java:21)
-	at ✽.check page title(file:src/features/OpenProd.feature:6)
-</failure>
-    <system-out>Feature: Prod Check
-
-  Scenario: main page check     &amp;#27;[90m# src/features/OpenProd.feature:4&amp;#27;[0m
-    &amp;#27;[32mGiven &amp;#27;[0m&amp;#27;[32mopen main page&amp;#27;[0m        &amp;#27;[90m# MyStepdefs.openMainPage()&amp;#27;[0m
-    &amp;#27;[31mThen &amp;#27;[0m&amp;#27;[31mcheck page title&amp;#27;[0m       &amp;#27;[90m# MyStepdefs.checkPageTitle()&amp;#27;[0m
-      &amp;#27;[31mcom.codeborne.selenide.ex.ElementShould: Element should have attribute text=&quot;Р•РґРёРЅР°СЏ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅР°СЏ СЃРёСЃС‚РµРјР° Р¶РёР»РёС‰РЅРѕРіРѕ СЃС‚СЂРѕРёС‚РµР»СЊСЃС‚РІР°&quot; {title}
-Element: &apos;&lt;title class=&quot;next-head&quot; displayed:false&gt;&lt;/title&gt;&apos;
-Actual value: text=&quot;Единая информационная система жилищного строительства&quot;
-Screenshot: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.png
-Page source: file:/C:/Users/starikov-rg/IdeaProjects/test-prod-stab/build/reports/tests/1569488751613.0.html
-Timeout: 4 s.
-	at com.codeborne.selenide.impl.WebElementSource.checkCondition(WebElementSource.java:72)
-	at com.codeborne.selenide.commands.Should.execute(Should.java:24)
-	at com.codeborne.selenide.commands.Should.execute(Should.java:10)
-	at com.codeborne.selenide.commands.Commands.execute(Commands.java:145)
-	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:99)
-	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:65)
-	at com.sun.proxy.$Proxy14.shouldHave(Unknown Source)
-	at test.MyStepdefs.checkPageTitle(MyStepdefs.java:21)
-	at ?.check page title(file:src/features/OpenProd.feature:6)
-&amp;#27;[0m
-    &amp;#27;[36mAnd &amp;#27;[0m&amp;#27;[36mtitle is not 500 or 400&amp;#27;[0m &amp;#27;[90m# MyStepdefs.titleIsNot500or400()&amp;#27;[0m
-</system-out>
-    <system-err>сент. 26, 2019 2:05:41 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
-INFO: No webdriver is bound to current thread: 1 - let&apos;s create a new webdriver
-SLF4J: Failed to load class &quot;org.slf4j.impl.StaticLoggerBinder&quot;.
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Starting ChromeDriver 77.0.3865.40 (f484704e052e0b556f8030b65b953dce96503217-refs/branch-heads/3865@{#442}) on port 9359
-Only local connections are allowed.
-Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-сент. 26, 2019 2:05:44 PM org.openqa.selenium.remote.ProtocolHandshake createSession
-INFO: Detected dialect: W3C
-сент. 26, 2019 2:05:44 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
-INFO: Set browser size to 1366x768
-сент. 26, 2019 2:05:45 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
-INFO: BrowserName=chrome Version=77.0.3865.90 Platform=XP
-сент. 26, 2019 2:05:45 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
-INFO: Selenide v. 5.3.1
-сент. 26, 2019 2:05:45 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
-INFO: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03
-сент. 26, 2019 2:05:45 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
-INFO: Create webdriver in current thread 1: ChromeDriver -&gt; ChromeDriver: chrome on XP (650e2b5cf43aa4307d1a0de5535fa65e)
-</system-err>
-  </testcase>
+  <testcase classname="Prod Check" name="main page check" time="6.091"/>
 </testsuite>
