@@ -10,8 +10,8 @@
         <module name="test-prod-stab" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="8">
-      <module name="test-prod-stab" target="8" />
+    <bytecodeTargetLevel target="7">
+      <module name="test-prod-stab" target="7" />
     </bytecodeTargetLevel>
   </component>
 </project>

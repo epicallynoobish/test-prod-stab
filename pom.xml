@@ -27,6 +27,25 @@
                     <target>7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <!--
+            <configuration>
+                <repository>docker.io/quadrapupel/test-prod-stab</repository>
+                <tag>${project.version}</tag>
+            </configuration>
+            -->
+        </plugin>
         </plugins>
     </build>
 
@@ -60,5 +79,10 @@
             <version>21.0</version>
         </dependency>
         -->
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.4.13</version>
+        </dependency>
     </dependencies>
 </project>
