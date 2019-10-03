@@ -2,6 +2,8 @@ package test;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,7 +19,7 @@ public class MyStepdefs {
     public void openMainPage() throws NullPointerException, InterruptedException {
         open("https://xn--80az8a.xn--d1aqf.xn--p1ai/");
         //$("__next").waitUntil(visible, 50);
-        executeJavaScript("return document.readyState").equals("complete");
+        assert(executeJavaScript("return document.readyState").equals("complete"));
     }
 
     @Then("check page title")
