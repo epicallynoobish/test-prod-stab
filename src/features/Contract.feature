@@ -1,18 +1,12 @@
-Feature: Prod Check
+Feature: dogovor check
 
-  # 1 проверка глагны
-  Scenario: main page check
-    Given open main page
-    Then check page title
-    And title is not 500 or 400
-
-    #2 проверка создания и проведения Договора
+  #1 проверка создания и проведения Договора
   Scenario: open contract creation
-    Given main page is opened
-    And i have HSE_UID_Customer and HSE_Contract_EOL roles
-    When i click +Create button
-    Then modal window is open
-    And there are valid creation dialogs
+      Given main page is opened
+      And i have HSE_UID_Customer and HSE_Contract_EOL roles
+      When i click +Create button
+      Then modal window is open
+      And there are valid creation dialogs
 
   Scenario: fill required fields
     Given creation dialog opened
