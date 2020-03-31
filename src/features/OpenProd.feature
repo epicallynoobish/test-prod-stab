@@ -16,22 +16,22 @@ Feature: Prod Check
 
   Scenario: fill required fields
     Given creation dialog opened
-    When i type name <autotest> and number <autotest>
-    And i set job type <Добыча>
-    And i set start date at 01.01.2020
-    And i set jobstart date at 02.01.2020
-    And i set finish date at 01.04.2020
+    When i type name "autotest" and number "autotest"
+    And i set job type "Добыча"
+    And i set start date at "01.01.2020"
+    And i set jobstart date at "02.01.2020"
+    And i set finish date at "01.04.2020"
     And i check if all required fields are filled
     Then Save button is active
 
-  Scenario: save the dogovor
+  Scenario: save the contract
     Given creation dialog opened
     And all required fields are filled
     When i press Save Button
     Then window is closed
-    And dogovor is saved and selected
+    And contract is saved and selected
 
-  Scenario: check saved dogovor
-    Given dogovor is created
-    When i check active dogovor
+  Scenario: check saved contract
+    Given contract is created
+    When i check active contract
     Then i see right data
