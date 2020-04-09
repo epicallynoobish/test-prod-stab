@@ -27,7 +27,10 @@ public class MyStepdefs {
     public void setUp() throws InterruptedException {
     System.out.print("Открытие страницы...");
     open("http://test-web/hse/management/contracts");
-    //$("title").wait(500);
+    SelenideElement title = $(By.xpath("/html/body/app-root/app-management/div/app-header/div/div[1]/app-header-logo/div/a/div[3]"));
+    title.waitUntil(visible, 60000);
+    System.out.print("title is");
+        System.out.println(title.getText());
     }
 
     @Given("open main page")
@@ -75,13 +78,15 @@ public class MyStepdefs {
     @Given("i have HSE_UID_Customer and HSE_Contract_EOL roles")
     public void i_have_HSE_UID_Customer_and_HSE_Contract_EOL_roles() {
         refresh();
-        $("body > app-root > app-management > div > app-header > div > div.left > app-header-logo > div > div.label").waitUntil(visible, 50000);
-        assert(($("#button > span.text-truncate").getText().contentEquals("HSE_UID_Customer")));
-        Condition.and (String.valueOf($("#button > span.text-truncate").getText().contentEquals("HSE_Contract_EOL")));
+        SelenideElement roles_group_drpdwn = $(By.xpath("//*[@id=\"button\"]/span[1]"));
+        SelenideElement roles_name_drpdwn = $(By.xpath("//*[@id=\"button\"]/span[1]"));
+        roles_group_drpdwn.waitUntil(visible, 50000);
+        assert(roles_group_drpdwn.getText().contentEquals("HSE_UID_Customer"));
+        Condition.and (String.valueOf(roles_name_drpdwn.getText().contentEquals("HSE_Contract_EOL")));
         System.out.print("Роли = ");
-        System.out.print($("#button > span.text-truncate").getText());
+        System.out.print(roles_group_drpdwn.getText());
         System.out.print("/");
-        System.out.println($("#button > span.text-truncate").getText());
+        System.out.println(roles_name_drpdwn.getText());
     }
 
     @When("i click +Create button")
@@ -123,21 +128,19 @@ public class MyStepdefs {
 
     @Given("creation dialog opened")
     public void creation_dialog_opened() {
-        $("title").waitUntil(visible, 500);
+        //$("title").waitUntil(visible, 500);
         SelenideElement crtBttn = $(By.xpath("/html/body/app-root/app-management/div/div/app-side-panel/div/div[2]/div/app-management-side-panel/div[3]/div[1]/app-button[1]/div"));
-        if ($(By.className("modal-header")).getText().contains("Инициирование договора")) {
-            System.out.print("Открыта модалка ");
-            System.out.println($(By.className("modal-header")).getText());
-        }
-        else {
+        crtBttn.waitUntil(visible, 500);
+        //SelenideElement crtWndw = $(By.xpath("");
+        if (!$(By.className("modal-header")).getText().contains("Инициирование договора")) {
             System.err.println("Не открыта модалка!");
             System.out.println("Жмякаем на +Создать...");
             crtBttn.shouldBe(visible);
             crtBttn.click();
             assert ($(By.className("modal-header")).getText().contains("Инициирование договора"));
-            System.out.print("Открыта модалка ");
-            System.out.println($(By.className("modal-header")).getText());
         }
+        System.out.print("Открыта модалка ");
+        System.out.println($(By.className("modal-header")).getText());
     }
 
     @When("i type name {string} and number {string}")
@@ -222,7 +225,9 @@ public class MyStepdefs {
 
     @When("i set jobstart date at {string}")
     public void i_set_jobstart_date_at(String string) {
-        // Write code here that turns the phrase above into concrete actions
+        //SelenideElement jobstart_pick = $("");
+        //jobstart_pick.click();
+        //jobstart_pick.sendKeys("01.01.2020");
         throw new cucumber.api.PendingException();
     }
 
