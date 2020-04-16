@@ -25,12 +25,12 @@ public class MyStepdefs {
 
     @Before
     public void setUp() throws InterruptedException {
-    System.out.print("Открытие страницы...");
+    System.out.println("Открытие страницы...");
     open("http://test-web/hse/management/contracts");
     SelenideElement title = $(By.xpath("/html/body/app-root/app-management/div/app-header/div/div[1]/app-header-logo/div/a/div[3]"));
     title.waitUntil(visible, 60000);
-    System.out.print("title is");
-        System.out.println(title.getText());
+    System.out.print("title is ");
+    System.out.println(title.getText());
     }
 
     @Given("open main page")
@@ -43,10 +43,13 @@ public class MyStepdefs {
 
     @Then("check page title")
     public void checkPageTitle() {
-        $("title")
-                .shouldHave(attribute("text", "ГПН"));
+        //SelenideElement title = $(By.xpath("/html/body/app-root/app-management/div/app-header/div/div[1]/app-header-logo/div/a/div[3]"));
+        //title.shouldHave(attribute("text", "ГПН"));
+
+        $("title").shouldHave(attribute("text", "ГПН"));
         System.out.print("Заголовок страницы = ");
-        System.out.print($("title").getText());
+        //System.out.println(title.getText());
+        System.err.println( $("title").getText());
     }
 
     @Then("title is not 500 or 400")
@@ -199,17 +202,17 @@ public class MyStepdefs {
         yearPicker.click();
         //сначала выбираем год
         for (SelenideElement item : Years) {
-            if (item.getText()==("2020")) {
+            //System.out.print(item.getText());
+            //System.out.print(";");
+            if (item.getText().equalsIgnoreCase("2020")) {
                 item.click();
                 System.out.println("Выбран год: ");
                 System.out.println(item.getText());
                 }
-            else {
-                //System.err.println("Не вижу годов!");
-                }
             }
         //потом выбираем месяц
         for (SelenideElement item : Month) {
+            System.out.println(item.getText());
             if (item.getText().equalsIgnoreCase("Январь")) {
                 item.click();
                 System.out.println("Выбран месяц: ");
