@@ -11,6 +11,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assume;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -19,6 +20,7 @@ import java.util.*;
 import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.WebDriverRunner.url;
 
 public class MyStepdefs {
@@ -192,56 +194,150 @@ public class MyStepdefs {
     }
 
     @When("i set start date at {string}")
-    public void i_set_start_date_at(String string) {
-        SelenideElement startDatePicker = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[2]/div[1]/app-datepicker/div/button"));
-        ElementsCollection Month = $$("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-month-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table");
-        ElementsCollection Years = $$("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-years-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table");
-        SelenideElement yearPicker = $(By.xpath("/html/body/bs-dropdown-container/div/div/bs-datepicker-inline/bs-datepicker-inline-container/div/div/div/div/bs-days-calendar-view/bs-calendar-layout/div[1]/bs-datepicker-navigation-view/button[3]"));
+    public void i_set_start_date_at(String string) throws InterruptedException {
+        SelenideElement start_pick = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[2]/div[1]/app-datepicker/div/button"));
+        /*SelenideElement YearsTbl = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-years-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table");
+        ElementsCollection Years = $$((Collection<? extends WebElement>) YearsTbl.closest("tr"));
+        for (SelenideElement item : Years) {
+            YearsTbl.closest("tr");
+        }
 
+        SelenideElement yearPicker = $(By.xpath("/html/body/bs-dropdown-container/div/div/bs-datepicker-inline/bs-datepicker-inline-container/div/div/div/div/bs-days-calendar-view/bs-calendar-layout/div[1]/bs-datepicker-navigation-view/button[3]"));
         startDatePicker.click();
         yearPicker.click();
+
         //сначала выбираем год
         for (SelenideElement item : Years) {
-            //System.out.print(item.getText());
-            //System.out.print(";");
-            if (item.getText().equalsIgnoreCase("2020")) {
+            System.out.print(item.getText());
+            System.out.print(";");
+            if (item.getText().equals("2020")) {
+                assert item.isDisplayed();
+                item.shouldBe(visible);
                 item.click();
                 System.out.println("Выбран год: ");
                 System.out.println(item.getText());
                 }
             }
+
         //потом выбираем месяц
+        ElementsCollection Month = $$("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-month-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table");
         for (SelenideElement item : Month) {
+            //item.shouldBe(visible);
+            assert item.isDisplayed();
             System.out.println(item.getText());
             if (item.getText().equalsIgnoreCase("Январь")) {
+                assert item.isDisplayed();
                 item.click();
                 System.out.println("Выбран месяц: ");
                 System.out.println(item.getText());
             }
-            else {
-                //System.err.println("Не вижу месяцов!");
-            }
+            //System.err.println("Не вижу месяцов!");
             item.shouldBe(visible);
             System.out.println(item.getText());
         }
+
+        //наконец, выбираем день
+        ElementsCollection Days = $$("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table > tbody");
+        for (SelenideElement item : Days) {
+            //item.shouldBe(visible);
+            assert item.isDisplayed();
+            System.out.println(item.getText());
+            if (item.getText().equalsIgnoreCase("1") && item.has(attribute("role", "gridcell"))) {
+                assert item.isDisplayed();
+                item.click();
+                System.out.println("Выбран день: ");
+                System.out.println(item.getText());
+            }
+            //System.err.println("Не вижу месяцов!");
+            item.shouldBe(visible);
+            System.out.println(item.getText());
+        }
+        */
+        start_pick.click();
+         //SelenideElement CurrMonth =$("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.current.ng-star-inserted > span");
+         //CurrMonth.waitUntil(visible, 100);
+         //CurrMonth.click();
+         //SelenideElement monJan = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-month-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table > tbody > tr:nth-child(1) > td:nth-child(1) > span");
+         //monJan.waitUntil(visible, 100);
+         //monJan.click();
+
+        //scroll all the way to Jan 20
+        SelenideElement monthName = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.current.ng-star-inserted");
+        SelenideElement arrLerf = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.previous");
+        while (!monthName.getText().equalsIgnoreCase("Январь")) {
+            arrLerf.click();
+            }
+
+        //pick 01 Jan 2020
+        SelenideElement dayOne = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table > tbody > tr:nth-child(1) > td:nth-child(4)");
+        dayOne.waitUntil(visible, 100);
+        dayOne.click();
+
+        System.out.print("Дата старта: ");
+        String startDateText = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[2]/div[1]/app-datepicker/div/button")).getText();
+        System.out.println(startDateText);
+        assert startDateText.equalsIgnoreCase(string);
     }
 
     @When("i set jobstart date at {string}")
-    public void i_set_jobstart_date_at(String string) {
-        //SelenideElement jobstart_pick = $("");
-        //jobstart_pick.click();
-        //jobstart_pick.sendKeys("01.01.2020");
-        throw new cucumber.api.PendingException();
+    public void i_set_jobstart_date_at(String string) throws InterruptedException {
+        SelenideElement jobstart_pick = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[3]/div[1]/app-datepicker/div"));
+        jobstart_pick.click();
+
+        SelenideElement arrLerf = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.previous");
+        SelenideElement monthName = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.current.ng-star-inserted");
+
+        while (!monthName.getText().equalsIgnoreCase("Январь")) {
+            arrLerf.click();
+        }
+
+        SelenideElement dayTwo = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table > tbody > tr:nth-child(1) > td:nth-child(5)");
+        dayTwo.waitUntil(visible, 100);
+        dayTwo.click();
+
+        System.out.print("Дата начала работ: ");
+        String jobstartDate = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[3]/div[1]/app-datepicker/div/button")).getText();
+        assert jobstartDate.equalsIgnoreCase(string);
+        System.out.println(jobstartDate);
     }
 
     @When("i set finish date at {string}")
-    public void i_set_finish_date_at(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+    public void i_set_finish_date_at(String string) throws InterruptedException {
+        SelenideElement finish_pick =$(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[4]/div[1]/app-datepicker/div"));
+        finish_pick.click();
+
+        SelenideElement arrLeft = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.previous");
+        SelenideElement monthName = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-head > bs-datepicker-navigation-view > button.current.ng-star-inserted");
+
+        while (!monthName.getText().equalsIgnoreCase("Январь")) {
+            arrLeft.click();
+        }
+
+        SelenideElement dayOne = $("body > bs-dropdown-container > div > div > bs-datepicker-inline > bs-datepicker-inline-container > div > div > div > div > bs-days-calendar-view > bs-calendar-layout > div.bs-datepicker-body > table > tbody > tr:nth-child(1) > td:nth-child(4)");
+        dayOne.waitUntil(visible, 100);
+        dayOne.click();
+
+        System.out.print("Дата окончания работ: ");
+        String finishDate = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[4]/div[1]/app-datepicker/div/button")).getText();
+        assert finishDate.equalsIgnoreCase(string);
+        System.out.println(finishDate);
     }
 
     @When("i check if all required fields are filled")
     public void i_check_if_all_required_fields_are_filled() {
+        WebElement startDate = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[2]/div[1]/app-datepicker/div/button"));
+        WebElement jobstartDate = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[3]/div[1]/app-datepicker/div/button"));
+        WebElement finishDate = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[4]/div[1]/app-datepicker/div/button"));
+        WebElement conName =$(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[1]/div[1]/app-text-area/div[1]/div"));
+        WebElement conNumber = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[1]/div[2]/app-input"));
+        WebElement workType = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[2]/div[2]/app-dropdown/div[1]/label"));
+        WebElement Cluster = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[3]/div[2]/app-dropdown/div[1]/button"));
+        WebElement Project = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[4]/div[2]/app-dropdown/div[1]/button"));
+        WebElement LicArea = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[5]/div[2]/app-dropdown/div[1]/button"));
+        WebElement Place = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[6]/div[2]/app-dropdown/div[1]/button"));
+        WebElement Object = $(By.xpath("/html/body/app-root/app-management/div/div/div/app-contracts/app-modal/app-modal-template/div/div/div/div[2]/app-create-contract/div/div[7]/div[2]/app-dropdown/div[1]/button"));
+
+        
         // Write code here that turns the phrase above into concrete actions
         throw new cucumber.api.PendingException();
     }
